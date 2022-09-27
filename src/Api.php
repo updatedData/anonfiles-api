@@ -9,9 +9,9 @@ use GuzzleHttp\RequestOptions;
 
 class Api
 {
-    private Client $client;
+    private readonly ?Client $client;
 
-    public function __construct(private readonly ?string $apiKey = null, Client $client = null)
+    public function __construct(private readonly ?string $apiKey = null, ?Client $client = null)
     {
         $this->client = $client ?? new Client();
     }
