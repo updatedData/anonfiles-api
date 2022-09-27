@@ -1,0 +1,52 @@
+{
+  "source": {
+    "directories": [
+      "src"
+    ],
+    "excludes": [
+      "Config",
+      "Folder/with/File.php",
+      "/\\.interface\\.php/",
+      "{Infrastructure/.*}"
+    ]
+  },
+  "timeout": 10,
+  "logs": {
+    "text": "infection.log",
+    "html": "infection.html",
+    "summary": "summary.log",
+    "json": "infection-log.json",
+    "perMutator": "per-mutator.md",
+    "github": true,
+    "stryker": {
+      "badge": "/^release-.*$/"
+    }
+  },
+  "tmpDir": "/opt/tmp-folder",
+  "phpUnit": {
+    "configDir": "app",
+    "customPath": "\/path\/to\/phpunit-6.1.phar"
+  },
+  "mutators": {
+    "global-ignore": [
+      "FooClass::__construct"
+    ],
+    "global-ignoreSourceCodeByRegex": [
+      "Assert::.*"
+    ],
+    "@default": true,
+    "@function_signature": false,
+    "TrueValue": {
+      "ignore": [
+        "NameSpace\\*\\Class::method"
+      ],
+      "ignoreSourceCodeByRegex": [
+        "\\$this->logger.*"
+      ]
+    }
+  },
+  "testFramework":"phpunit",
+  "bootstrap":"./infection-bootstrap.php",
+  "initialTestsPhpOptions": "-d zend_extension=xdebug.so",
+  "testFrameworkOptions": "--filter=Unit"
+}
